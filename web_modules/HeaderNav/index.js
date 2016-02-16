@@ -12,6 +12,9 @@ import NavigationMenu from 'material-ui/lib/svg-icons/navigation/menu';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 
+import {Link,IndexLink} from 'react-router'
+import style from "./index.css"
+
 export default class HeaderNav extends Component {
 
     state = {
@@ -35,9 +38,10 @@ export default class HeaderNav extends Component {
                     <AppBar
                         title="Menu"
                         iconElementLeft={<IconButton onClick={this.handleToggle}><NavigationClose /></IconButton>}	/>
-                    <MenuItem>Home</MenuItem>
-                    <MenuItem>Discover</MenuItem>
-          </LeftNav>
+                    
+                    <Link to="PageHome" activeClassName={style.activeLink} className={style.link}> <MenuItem onClick={this.handleToggle}> Home </MenuItem> </Link>
+                    <Link to="PageDiscover" activeClassName={style.activeLink} className={style.link}> <MenuItem onClick={this.handleToggle}> Discover </MenuItem> </Link>
+            </LeftNav>
         </div>)
 
     }
