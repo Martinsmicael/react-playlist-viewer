@@ -15,6 +15,7 @@ export default class Routes extends Component {
             <Route path="artist" component={PageArtist}/>
             <Route path="discover" component={PageDiscover}/>
             <IndexRoute component={PageHome} />
+            <Route path="artist/:artistId(/:artistName)" component={PageArtist}/>
         </Route>
         <Route path="*" component={App}/>
       </Router>

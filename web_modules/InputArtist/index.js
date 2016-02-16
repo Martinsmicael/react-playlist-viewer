@@ -7,6 +7,9 @@ import styles from "./index.css";
 
 export default class InputArtist extends Component {
 
+static contextTypes ={
+  router: PropTypes.object,
+};
   state = {
     artists: null,
   };
@@ -24,7 +27,7 @@ export default class InputArtist extends Component {
   };
 
   selectArtist = (item) => {
-      console.log("item :: ",item.name, " id ",item.id)
+      this.context.router.push(`/artist/${item.id}/${item.name}`)
   };
 
   render() {
