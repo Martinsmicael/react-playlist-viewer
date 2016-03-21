@@ -29,7 +29,7 @@ const Item = ({name ="", image=null, kinds=[], songs=[], album_list=[] }) =>
     </ul>
 
 
-    <div className={styles.kinds}>
+    <div className={styles.list}>
       {
         album_list&&
         album_list.map((album, index) =>{

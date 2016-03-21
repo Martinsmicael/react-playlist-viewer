@@ -85,7 +85,8 @@ export default class PageArtist extends Component {
             <ItemDetails name={album.name}
                          image={album.picture ? album.picture.url : null}
                          album_list={album_type}
-                         ]}  />
+                           />
+
         }
       </div>
     )
