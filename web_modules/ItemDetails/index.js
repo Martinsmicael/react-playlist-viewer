@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import styles from "./index.css"
 
-const Item = ({name ="", image=null, kinds=[], songs=[]}) =>
+const Item = ({name ="", image=null, kinds=[], songs=[], album_list=[] }) =>
 
 (<div className={styles.itemDetails}>
     {
@@ -28,6 +28,17 @@ const Item = ({name ="", image=null, kinds=[], songs=[]}) =>
       }
     </ul>
 
+
+    <div className={styles.kinds}>
+      {
+        album_list&&
+        album_list.map((album, index) =>{
+          return <li className={styles.song} key={index}>{album.name}</li>
+        })
+      }
+      </div>
+
 </div>)
+
 
 export default Item

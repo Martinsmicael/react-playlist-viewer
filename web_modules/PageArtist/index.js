@@ -4,6 +4,8 @@ import fetchJSON from "app/fetchJSON";
 import consts from "app/consts"
 
 import { get as getArtist } from "app/reducers/artist"
+import { get as getAlbum } from "app/reducers/albums"
+
 
 import ItemDetails from "ItemDetails"
 
@@ -13,7 +15,9 @@ import ItemDetails from "ItemDetails"
     }),
     (dispatch) => ({
         getArtist : (value) => dispatch(getArtist(value)),
-    })
+        getAlbum : (value) => dispatch(getAlbum(value)),
+
+    }),
 )
 export default class PageArtist extends Component {
 
@@ -23,31 +27,39 @@ export default class PageArtist extends Component {
       }),
       artists : PropTypes.object,
       getArtist : PropTypes.func,
+      getAlbum : PropTypes.func,
   };
 
   static defaultProps = {
       params: {},
       artist : null,
-      getArtist : () => {}
+      getArtist : () => {},
+      getAlbum : () => {}
   };
   componentDidMount(){
 
       const {
         params,
         getArtist,
+        getAlbum,
       } = this.props
 
-      if(params.artistId) getArtist(params.artistId)
+      if(params.artistId) {
+        getArtist(params.artistId) 
+        getAlbum(params.artistId)
+      }
   }
 
   componentWillReceiveProps(nextProps){
     const {
       params,
       getArtist,
+      getAlbum,
     } = this.props
 
     if(nextProps.params.artistId!=params.artistId){
       getArtist(nextProps.params.artistId)
+      getAlbum(nextProps.params.artistId)
     }
   }
 
@@ -55,15 +67,25 @@ export default class PageArtist extends Component {
     const {
       params,
       artist,
+      album,
     } = this.props
     return (
       <div>
         {
-            artist && !artist.loading &&
+            artist && !artist.loading && 
             <ItemDetails name={artist.name}
                          image={artist.picture ? artist.picture.url : null}
                          kinds={artist.genres}
-                         songs={[{name:"..."},{name:"..."},{name:"..."}]}  />
+                         songs={[{name:"..."},{name:"..."},{name:"..."}
+
+                         ]}  />
+        }
+        {
+            album && !album.loading && 
+            <ItemDetails name={album.name}
+                         image={album.picture ? album.picture.url : null}
+                         album_list={album_type}
+                         ]}  />
         }
       </div>
     )

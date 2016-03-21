@@ -11,8 +11,11 @@ export default {
       getArtist:(id)=>{
         return apiPath+`artists/${id}`
       },
-      getKinds: () =>{
+      getKinds:() =>{
         return apiExplorerPath+`api/genres`
+      },
+      getAlbum:(id)=>{
+        return apiPath+`artists/${id}/albums`
       }
 
     }
