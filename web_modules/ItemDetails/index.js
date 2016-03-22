@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import styles from "./index.css"
 
-const Item = ({name ="", image=null, kinds=[], songs=[], album_list=[] }) =>
+const Item = ({name ="", image=null, kinds=[], songs=[], album=[] }) =>
 
 (<div className={styles.itemDetails}>
     {
@@ -27,16 +27,20 @@ const Item = ({name ="", image=null, kinds=[], songs=[], album_list=[] }) =>
         })
       }
     </ul>
-
-
-    <div className={styles.list}>
+    <div>
       {
-        album_list&&
-        album_list.map((album, index) =>{
-          return <li className={styles.song} key={index}>{album.name}</li>
+        album &&
+        Object.keys(album).map((albumKey, index) =>{
+          console.log(album[albumKey].images)
+          return <div key={index}>
+          <div>{album[albumKey].name}</div>
+          <div>{album[albumKey].album_type}</div>
+          <img src={album[albumKey].images}   className={styles.image} />
+          </div>
+
         })
       }
-      </div>
+    </div>
 
 </div>)
 

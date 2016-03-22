@@ -6,12 +6,12 @@ export const SET = "molotov/albums/SET"
 export const ERROR = "molotov/albums/ERROR"
 
 const initialState = {
-
+    loading:true
 }
 
-const format = (data) => {
-    return {results:data.items}
-}
+// const format = (data) => {
+//     return {results:data.items}
+// }
 
 // redux reducer
 export default function reducer(state = initialState, action) {
@@ -24,7 +24,7 @@ export default function reducer(state = initialState, action) {
 
     case SET:
         return {
-            ...format(action.response.artists)
+            ...action.response.items
         }
 
     case ERROR:

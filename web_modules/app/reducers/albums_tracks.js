@@ -24,7 +24,7 @@ export default function reducer(state = initialState, action) {
 
     case SET:
         return {
-            ...format(action.response.artists)
+            ...format(action.response.albums_tracks)
         }
 
     case ERROR:

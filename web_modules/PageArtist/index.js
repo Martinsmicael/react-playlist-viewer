@@ -11,7 +11,8 @@ import ItemDetails from "ItemDetails"
 
 @connect(
     (state) => ({
-        artist : state.artist
+        artist : state.artist,
+        albums : state.albums
     }),
     (dispatch) => ({
         getArtist : (value) => dispatch(getArtist(value)),
@@ -27,12 +28,13 @@ export default class PageArtist extends Component {
       }),
       artists : PropTypes.object,
       getArtist : PropTypes.func,
-      getAlbum : PropTypes.func,
+      // getAlbum : PropTypes.func,
   };
 
   static defaultProps = {
       params: {},
       artist : null,
+      albums : null,
       getArtist : () => {},
       getAlbum : () => {}
   };
@@ -67,27 +69,19 @@ export default class PageArtist extends Component {
     const {
       params,
       artist,
-      album,
+      albums,
     } = this.props
     return (
       <div>
-        {
-            artist && !artist.loading && 
-            <ItemDetails name={artist.name}
-                         image={artist.picture ? artist.picture.url : null}
-                         kinds={artist.genres}
-                         songs={[{name:"..."},{name:"..."},{name:"..."}
-
-                         ]}  />
-        }
-        {
-            album && !album.loading && 
-            <ItemDetails name={album.name}
-                         image={album.picture ? album.picture.url : null}
-                         album_list={album_type}
-                           />
-
-        }
+            {
+                artist && !artist.loading && 
+                <ItemDetails name={artist.name}
+                             image={artist.picture ? artist.picture.url : null}
+                             kinds={artist.genres}
+                             songs={[{name:"..."},{name:"..."},{name:"..."}]}
+                             album={albums} />
+            }
+    
       </div>
     )
   }
