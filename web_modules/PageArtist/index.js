@@ -71,10 +71,13 @@ export default class PageArtist extends Component {
       artist,
       albums,
     } = this.props
+
+    console.log(albums)
+
     return (
       <div>
             {
-                artist && !artist.loading && 
+                artist && !artist.loading && albums && !albums.loading &&
                 <ItemDetails name={artist.name}
                              image={artist.picture ? artist.picture.url : null}
                              kinds={artist.genres}

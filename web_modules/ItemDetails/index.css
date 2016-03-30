@@ -1,6 +1,6 @@
 .itemDetails{
   display: inline-block;
-  width: 600px;
+  width: 100%;
 }
 
 .title {
@@ -8,11 +8,11 @@
 }
 
 .image {
-  border-radius: 50px;
+  /*border-radius: 50px;
   width: 100px;
   height: 100px;
   margin-right: 20px;
-  float: left;
+  float: left;*/
 }
 
 .kinds:after {

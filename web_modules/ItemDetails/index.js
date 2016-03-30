@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Router, Route, Link, browserHistory } from 'react-router';
 
 import styles from "./index.css"
 
@@ -19,29 +20,30 @@ const Item = ({name ="", image=null, kinds=[], songs=[], album=[] }) =>
         })
       }
     </div>
-    <ul className={styles.list}>
-      {
-        songs &&
-        songs.map((song, index) => {
-          return <li className={styles.song} key={index}>{song.name}</li>
-        })
-      }
-    </ul>
+      <ul className={styles.list}>
+        {
+          songs &&
+          songs.map((song, index) => {
+            return <li className={styles.song} key={index}>{song.name}</li>
+          })
+        }
+      </ul>
     <div>
       {
-        album &&
+        album && !album.loading &&
         Object.keys(album).map((albumKey, index) =>{
-          console.log(album[albumKey].images)
+          //console.log(album[albumKey].images[0].url)
           return <div key={index}>
-          <div>{album[albumKey].name}</div>
-          <div>{album[albumKey].album_type}</div>
-          <img src={album[albumKey].images}   className={styles.image} />
+            <div> <Link to={`/album/${album[albumKey].id}`}>
+              {album[albumKey].name}
+              {album[albumKey].album_type}
+              <img src={album[albumKey].images[1].url}   className={styles.image} />
+            </Link></div>
+            
           </div>
-
         })
       }
     </div>
-
 </div>)
 
 

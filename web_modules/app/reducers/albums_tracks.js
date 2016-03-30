@@ -6,12 +6,13 @@ export const SET = "molotov/albums_tracks/SET"
 export const ERROR = "molotov/albums_tracks/ERROR"
 
 const initialState = {
+    loading:true
 
 }
 
-const format = (data) => {
-    return {results:data.items}
-}
+// const format = (data) => {
+//     return {results:data.items}
+// }
 
 // redux reducer
 export default function reducer(state = initialState, action) {
@@ -24,7 +25,7 @@ export default function reducer(state = initialState, action) {
 
     case SET:
         return {
-            ...format(action.response.albums_tracks)
+            ...action.response
         }
 
     case ERROR:
@@ -52,7 +53,7 @@ export function get(id) {
             ERROR,
         ],
         promise: (
-            fetchJSON(consts.api.enpoints.getAlbum_tracks(id), {
+            fetchJSON(consts.api.enpoints.getAlbums_tracks(id), {
                 method: "GET"
             })
         )

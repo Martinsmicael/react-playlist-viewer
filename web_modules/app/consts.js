@@ -18,7 +18,7 @@ export default {
         return apiPath+`artists/${id}/albums`
       },
       getAlbums_tracks:(id)=>{
-        return apiPath+`albums/${id}/tracks`
+        return apiPath+`albums/${id}`
       }
 
     }
