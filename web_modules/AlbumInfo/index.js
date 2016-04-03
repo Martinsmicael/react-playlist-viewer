@@ -11,6 +11,7 @@ const Item = ({name="", image=null, album_track=[], artist=[], date=[], populari
     image &&
     <img src={image} className={styles.image} />
   }
+  <br/>
   {
     date &&
     <span>Date de sortie : {date}</span>
@@ -20,26 +21,22 @@ const Item = ({name="", image=null, album_track=[], artist=[], date=[], populari
   { 
     album_track && !album_track.loading &&
     Object.keys(album_track.tracks.items).map((album_trackKey, index) =>{
-      return <li><span> {album_track.tracks.items[album_trackKey].track_number})  </span> 
-                 <span> {album_track.tracks.items[album_trackKey].name}</span>
-                 <span> <Link to={`/lecteur/${album_track.tracks.items[album_trackKey].preview_url}`}>Preview : </Link></span>
-                 lezoc
-                 <div className="track-container">
-                  <div className="album-cover">
-                    <img src={album_track[album_trackKey].images[2].url}/>
-                  </div>
+      return <li><div className="track-container">
+                  
                     <div className="track-header">
-                      <p><{album_track.tracks.items[album_trackKey].name}</p>
+                      <p>{album_track.tracks.items[album_trackKey].name}</p>
                       <br/>
-                      <span>{{name}}</span>
+                      <span>{name}</span>
                     </div>
-                  <div className="track-player">
+                    <div className="track-player">
                       <audio controls>
                         <source src={album_track.tracks.items[album_trackKey].preview_url +".mp3"} type="audio/mpeg"/>
                         Your browser does not support the audio element.
                       </audio>
-                  </div>
+                    </div>
+                    <br/><br/>
                 </div></li> 
+
     })
   }
 </div>)
